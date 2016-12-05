@@ -1,27 +1,29 @@
-# ember-gsap
+# Ember GSAP
 
-This README outlines the details of collaborating on this Ember addon.
+This Ember addon allows consumption of [GSAP - Greensock Animation Platform](https://github.com/greensock/GreenSock-JS) as ES6 Module imports in ember-cli apps.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-gsap`
-* `npm install`
-* `bower install`
+`ember install ember-gsap`
 
-## Running
+## Usage
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+Ember GSAP by default includes TweenMax, TweenLite, TimelineLite, TimelineMax, CSSPlugin, RoundPropsPlugin, BezierPlugin, AttrPlugin, DirectionalRotationPlugin, and all of the eases like Power1, Power2, Power3, Power4, Back, Bounce, Circ, Cubic, Elastic, Expo, Linear, Sine, RoughEase, SlowMo, SteppedEase, etc.
 
-## Running Tests
+Recommended import style is as follows:
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+```javascript
+import { TimelineMax, TweenMax, easing } from 'gsap';
 
-## Building
+const { Power2, Back, Elastic } = easing;
+```
 
-* `ember build`
+Easing functions can also be directly imported like so:
 
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+```javascript
+import { Power2, Back, Elastic } from 'gsap/easing';
+```
+
+## Additional Plugins
+
+Ember GSAP also includes the popular ScrollToPlugin.

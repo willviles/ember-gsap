@@ -2,7 +2,31 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    "TimelineMax",
+    "TimelineLite",
+    "TweenMax",
+    "TweenLite",
+    "CSSPlugin",
+    "RoundPropsPlugin",
+    "BezierPlugin",
+    "AttrPlugin",
+    "DirectionalRotationPlugin",
+    "Power1",
+    "Power2",
+    "Power3",
+    "Power4",
+    "Back",
+    "Bounce",
+    "Circ",
+    "Cubic",
+    "Elastic",
+    "Expo",
+    "Linear",
+    "Sine",
+    "RoughEase",
+    "SlowMo",
+    "SteppedEase"
   ],
   "browser": true,
   "boss": true,
@@ -27,6 +51,6 @@
   "strict": false,
   "white": false,
   "eqnull": true,
-  "esversion": 6,
-  "unused": true
+  "esnext": true,
+  "unused": false
 }

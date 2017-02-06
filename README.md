@@ -6,6 +6,10 @@ This Ember addon allows consumption of [GSAP - Greensock Animation Platform](htt
 
 `ember install ember-gsap`
 
+## Demo
+
+Check out this Ember Twiddle [demo](https://ember-twiddle.com/f61209fc8ad1f1e85613f8f4ef4573e1) to show Ember GSAP in action.
+
 ## Usage
 
 Ember GSAP by default includes TweenMax, TweenLite, TimelineLite, TimelineMax, CSSPlugin, RoundPropsPlugin, BezierPlugin, AttrPlugin, DirectionalRotationPlugin, and all of the eases like Power1, Power2, Power3, Power4, Back, Bounce, Circ, Cubic, Elastic, Expo, Linear, Sine, RoughEase, SlowMo, SteppedEase, etc.

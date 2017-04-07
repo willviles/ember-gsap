@@ -1,8 +1,6 @@
-module.exports = {
-  normalizeEntityName: function() {
-  },
+/* eslint node: true */
+'use strict';
 
-  afterInstall: function() {
-    return this.addBowerPackageToProject("gsap", "~1.19.0");
-  }
+module.exports = {
+  normalizeEntityName: function() {}
 };

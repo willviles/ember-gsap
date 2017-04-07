@@ -1,6 +1,4 @@
 {
   "name": "ember-gsap",
-  "dependencies": {
-    "gsap": "~1.19.0"
-  }
+  "dependencies": {}
 }

@@ -1,6 +1,7 @@
-# Ember GSAP
+Ember GSAP [![npm](https://img.shields.io/npm/v/ember-gsap.svg)](https://www.npmjs.com/package/ember-gsap)
+======
 
-This Ember addon allows consumption of [GSAP - Greensock Animation Platform](https://github.com/greensock/GreenSock-JS) as ES6 Module imports in ember-cli apps.
+Ember GSAP allows consumption of [GSAP - Greensock Animation Platform](https://github.com/greensock/GreenSock-JS) as ES6 Module imports in Ember applications.
 
 ## Installation
 

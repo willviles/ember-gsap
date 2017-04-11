@@ -21,17 +21,17 @@ module.exports = {
 
       app.import(this.treePaths.vendor + '/gsap/TweenMax.js');
 
-      app.import('vendor/gsap-shim.js', {
-        exports: {
-          'gsap': ['TweenMax', 'TweenLite', 'TimelineMax', 'TimelineLite', 'easing'],
-          'TweenMax': ['default'],
-          'TweenLite': ['default'],
-          'TimelineMax': ['default'],
-          'TimelineLite': ['default']
-        }
-      });
-
     }
+
+    app.import('vendor/gsap-shim.js', {
+      exports: {
+        'gsap': ['TweenMax', 'TweenLite', 'TimelineMax', 'TimelineLite', 'easing'],
+        'TweenMax': ['default'],
+        'TweenLite': ['default'],
+        'TimelineMax': ['default'],
+        'TimelineLite': ['default']
+      }
+    });
 
     return this._super.included.apply(this, arguments);
   },

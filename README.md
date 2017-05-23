@@ -1,4 +1,4 @@
-Ember GSAP [![npm](https://img.shields.io/npm/v/ember-gsap.svg)](https://www.npmjs.com/package/ember-gsap)
+Ember GSAP ![Download count all time](https://img.shields.io/npm/dt/ember-gsap.svg) [![npm](https://img.shields.io/npm/v/ember-gsap.svg)](https://www.npmjs.com/package/ember-gsap)
 ======
 
 Ember GSAP allows consumption of [GSAP - Greensock Animation Platform](https://github.com/greensock/GreenSock-JS) as ES6 Module imports in Ember applications.
@@ -29,6 +29,24 @@ Easing functions can also be directly imported like so:
 import { Power2, Back, Elastic } from 'gsap/easing';
 ```
 
-## Additional Plugins
+## GSAP Plugins
 
-Ember GSAP also includes the popular ScrollToPlugin.
+Popular Greensock Plugin libraries can be included like so:
+
+```js
+// config/environment.js
+ENV['ember-gsap'] = {
+  plugins: [
+    'draggable',
+    'scrollTo'
+  ]
+}
+```
+
+The following plugins can be included:
+
+- [Draggable](https://greensock.com/draggable)  
+```js
+import { Draggable } from 'gsap';
+```    
+- [ScrollToPlugin](https://greensock.com/ScrollToPlugin)

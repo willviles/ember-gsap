@@ -10,6 +10,12 @@ module.exports = {
   name: 'ember-gsap',
 
   included(app) {
+
+    this.addonConfig = this.app.project.config(app.env)['ember-gsap'] || {};
+
+    const plugins = this.addonConfig.plugins || [];
+    const vendor = this.treePaths.vendor;
+
     if (!isFastBoot()) {
 
       if (arguments.length < 1) {
@@ -19,7 +25,11 @@ module.exports = {
       // `using: []` syntax isavailable for Ember 2.9.0 and above only
       new VersionChecker(this).for('ember-cli', 'npm').assertAbove('2.9.0');
 
-      app.import(this.treePaths.vendor + '/gsap/TweenMax.js');
+      app.import(vendor + '/gsap/TweenMax.js');
+
+      if (plugins.includes('draggable')) {
+        app.import(vendor + '/gsap/Draggable.js');
+      }
 
     }
 

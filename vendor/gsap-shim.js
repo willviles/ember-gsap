@@ -24,15 +24,15 @@
     // Tweens
     'TweenLite', 'TweenMax',
     // Easing
-    'Power1', 'Power2', 'Power3', 'Power4', 'Back', 'Bounce', 'Circ', 'Cubic', 'Elastic', 'Expo', 'Linear', 'Sine', 'RoughEase', 'SlowMo', 'SteppedEase'
+    'Power1', 'Power2', 'Power3', 'Power4', 'Back', 'Bounce', 'Circ', 'Cubic', 'Elastic', 'Expo', 'Linear', 'Sine', 'RoughEase', 'SlowMo', 'SteppedEase',
+    // Plugins
+    'Draggable'
   ];
 
-  var attrs = {};
-
-  for (var i = 0; i < availableAttrs.length; i++) {
-    var key = availableAttrs[i];
-    attrs[key] = checkAttrAvailable(key);
-  }
+  var attrs = availableAttrs.reduce((prev, key) => {
+    prev[key] = checkAttrAvailable(key);
+    return prev;
+  }, {});
 
   var easing = {
     'Power1': attrs.Power1,
@@ -52,6 +52,10 @@
     'SteppedEase': attrs.SteppedEase
   };
 
+  var plugins = {
+    'Draggable': attrs.Draggable
+  };
+
   define('gsap', [], function() {
     'use strict';
     return {
@@ -59,11 +63,12 @@
       'TweenMax': attrs.TweenMax,
       'TimelineLite': attrs.TimelineLite,
       'TimelineMax': attrs.TimelineMax,
-      'easing': easing
+      'easing': easing,
+      'plugins': plugins,
+      'Draggable': attrs.Draggable
     };
   });
 
-  /* globals define, GSAP */
   define('TweenLite', [], function() {
     'use strict';
     return { 'default': attrs.TweenLite };
@@ -87,6 +92,11 @@
   define('gsap/easing', [], function() {
     'use strict';
     return easing;
+  });
+
+  define('gsap/plugins', [], function() {
+    'use strict';
+    return plugins;
   });
 
 })();

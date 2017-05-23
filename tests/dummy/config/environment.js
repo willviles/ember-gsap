@@ -23,6 +23,12 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['ember-gsap'] = {
+    plugins: [
+      'draggable'
+    ]
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

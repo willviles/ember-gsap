@@ -31,6 +31,10 @@ module.exports = {
         app.import(vendor + '/gsap/Draggable.js');
       }
 
+      if (plugins.includes('scrollTo')) {
+        app.import(vendor + '/gsap/ScrollToPlugin.js');
+      }
+
     }
 
     app.import('vendor/gsap-shim.js', {

@@ -50,3 +50,7 @@ The following plugins can be included:
 import { Draggable } from 'gsap';
 ```    
 - [ScrollToPlugin](https://greensock.com/ScrollToPlugin)
+
+## Fastboot
+
+Ember GSAP >=0.3.0 is fully compatible with all versions of [Ember CLI Fastboot](https://github.com/ember-fastboot/ember-cli-fastboot).

@@ -1,40 +1,38 @@
-/* eslint node: true */
+/* eslint-env node */
 'use strict';
 
-var Funnel = require('broccoli-funnel');
-var mergeTrees = require('broccoli-merge-trees');
-var VersionChecker = require('ember-cli-version-checker');
-var path = require('path');
+const Funnel = require('broccoli-funnel');
+const mergeTrees = require('broccoli-merge-trees');
+const path = require('path');
+const map = require('broccoli-stew').map;
 
 module.exports = {
   name: 'ember-gsap',
 
   included(app) {
+    if (typeof app.import !== 'function' && app.app) {
+      app = app.app;
+    }
+    this.app = app;
 
     this.addonConfig = this.app.project.config(app.env)['ember-gsap'] || {};
+    this.importDependencies(app);
 
+    return this._super.included.apply(this, arguments);
+  },
+
+  importDependencies(app) {
     const plugins = this.addonConfig.plugins || [];
     const vendor = this.treePaths.vendor;
 
-    if (!isFastBoot()) {
+    app.import(vendor + '/gsap/TweenMax.js');
 
-      if (arguments.length < 1) {
-        throw new Error('Application instance must be passed to import');
-      }
+    if (plugins.includes('draggable')) {
+      app.import(vendor + '/gsap/Draggable.js');
+    }
 
-      // `using: []` syntax isavailable for Ember 2.9.0 and above only
-      new VersionChecker(this).for('ember-cli', 'npm').assertAbove('2.9.0');
-
-      app.import(vendor + '/gsap/TweenMax.js');
-
-      if (plugins.includes('draggable')) {
-        app.import(vendor + '/gsap/Draggable.js');
-      }
-
-      if (plugins.includes('scrollTo')) {
-        app.import(vendor + '/gsap/ScrollToPlugin.js');
-      }
-
+    if (plugins.includes('scrollTo')) {
+      app.import(vendor + '/gsap/ScrollToPlugin.js');
     }
 
     app.import('vendor/gsap-shim.js', {
@@ -47,7 +45,6 @@ module.exports = {
       }
     });
 
-    return this._super.included.apply(this, arguments);
   },
 
   treeForVendor(vendorTree) {
@@ -60,24 +57,17 @@ module.exports = {
     trees.push(moduleToFunnel('gsap'));
 
     return mergeTrees(trees);
-  },
+  }
 
 };
 
 function moduleToFunnel(moduleName, destination) {
-  destination = destination || moduleName;
-  return new Funnel(resolveModulePath(moduleName), {
-    destDir: destination
+  let tree = new Funnel(resolveModulePath(moduleName), {
+    destDir: destination || moduleName
   });
+  return map(tree, (content) => `if (typeof FastBoot === 'undefined') { ${content} }`);
 }
 
 function resolveModulePath(moduleName) {
   return path.dirname(require.resolve(moduleName));
-}
-
-// Checks to see whether this build is targeting FastBoot. Note that we cannot
-// check this at boot time--the environment variable is only set once the build
-// has started, which happens after this file is evaluated.
-function isFastBoot() {
-  return process.env.EMBER_CLI_FASTBOOT === 'true';
 }

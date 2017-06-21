@@ -29,7 +29,7 @@
     'Draggable'
   ];
 
-  var attrs = availableAttrs.reduce((prev, key) => {
+  var attrs = availableAttrs.reduce(function (prev, key) {
     prev[key] = checkAttrAvailable(key);
     return prev;
   }, {});

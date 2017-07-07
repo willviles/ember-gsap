@@ -3,6 +3,7 @@
 
 const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
+const BroccoliDebug = require('broccoli-debug');
 const path = require('path');
 const map = require('broccoli-stew').map;
 
@@ -22,8 +23,8 @@ module.exports = {
   },
 
   importDependencies(app) {
-    const plugins = this.addonConfig.plugins || [];
-    const vendor = this.treePaths.vendor;
+    let plugins = this.addonConfig.plugins || [];
+    let vendor = this.treePaths.vendor;
 
     app.import(vendor + '/gsap/TweenMax.js');
 
@@ -48,15 +49,19 @@ module.exports = {
   },
 
   treeForVendor(vendorTree) {
-    var trees = [];
+    let debugTree = BroccoliDebug.buildDebugCallback(this.name);
+    let trees = [];
 
     if (vendorTree) {
-      trees.push(vendorTree);
+      trees.push(
+        debugTree(vendorTree, 'vendorTree')
+      );
     }
 
-    trees.push(moduleToFunnel('gsap'));
+    let gsap = moduleToFunnel('gsap');
+    trees.push(debugTree(gsap, 'gsap'));
 
-    return mergeTrees(trees);
+    return debugTree(mergeTrees(trees), 'mergedTrees');
   }
 
 };

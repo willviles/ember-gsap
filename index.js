@@ -4,6 +4,7 @@
 const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
 const BroccoliDebug = require('broccoli-debug');
+const fastbootTransform = require('fastboot-transform');
 const path = require('path');
 const map = require('broccoli-stew').map;
 
@@ -23,17 +24,18 @@ module.exports = {
   },
 
   importDependencies(app) {
-    let plugins = this.addonConfig.plugins || [];
-    let vendor = this.treePaths.vendor;
+    let plugins = this.addonConfig.plugins || [],
+        vendor = this.treePaths.vendor,
+        dir = `${vendor}/gsap`;
 
-    app.import(vendor + '/gsap/TweenMax.js');
+    app.import(`${dir}/TweenMax.js`);
 
     if (plugins.includes('draggable')) {
-      app.import(vendor + '/gsap/Draggable.js');
+      app.import(`${dir}/Draggable.js`);
     }
 
     if (plugins.includes('scrollTo')) {
-      app.import(vendor + '/gsap/ScrollToPlugin.js');
+      app.import(`${dir}/ScrollToPlugin.js`);
     }
 
     app.import('vendor/gsap-shim.js', {
@@ -58,7 +60,9 @@ module.exports = {
       );
     }
 
-    let gsap = moduleToFunnel('gsap');
+    let gsap = fastbootTransform(
+      moduleToFunnel('gsap')
+    );
     trees.push(debugTree(gsap, 'gsap'));
 
     return debugTree(mergeTrees(trees), 'mergedTrees');
@@ -67,10 +71,9 @@ module.exports = {
 };
 
 function moduleToFunnel(moduleName, destination) {
-  let tree = new Funnel(resolveModulePath(moduleName), {
+  return new Funnel(resolveModulePath(moduleName), {
     destDir: destination || moduleName
   });
-  return map(tree, (content) => `if (typeof FastBoot === 'undefined') { ${content} }`);
 }
 
 function resolveModulePath(moduleName) {

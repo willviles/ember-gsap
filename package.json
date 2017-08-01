@@ -28,6 +28,7 @@
     "broccoli-debug": "^0.6.2",
     "broccoli-stew": "^1.5.0",
     "ember-cli-babel": "^5.1.7",
+    "fastboot-transform": "^0.1.2",
     "gsap": "^1.19.1"
   },
   "devDependencies": {

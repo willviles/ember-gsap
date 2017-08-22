@@ -25,7 +25,8 @@ module.exports = function(environment) {
 
   ENV['ember-gsap'] = {
     plugins: [
-      'draggable'
+      'draggable',
+      'scrollTo'
     ]
   }
 

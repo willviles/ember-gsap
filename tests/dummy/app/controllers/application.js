@@ -32,6 +32,11 @@ export default Ember.Controller.extend({
         delay: 2.5
       });
 
+    },
+
+    scrollToTest() {
+      TweenLite.to(window, .5, { scrollTo: 400 });
     }
+
   }
 });

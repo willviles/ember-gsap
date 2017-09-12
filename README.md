@@ -1,4 +1,4 @@
-<img src="https://dl.dropboxusercontent.com/u/10491474/github/ember-gsap.png" width="auto" height="70">
+<img src="https://user-images.githubusercontent.com/2046935/30335303-dd0c1024-97d9-11e7-8e45-40054cd81043.png" width="auto" height="70">
 
 Ember GSAP ![Download count all time](https://img.shields.io/npm/dt/ember-gsap.svg) [![npm](https://img.shields.io/npm/v/ember-gsap.svg)](https://www.npmjs.com/package/ember-gsap)
 ======

@@ -15,7 +15,7 @@ Check out this Ember Twiddle [demo](https://ember-twiddle.com/f61209fc8ad1f1e856
 
 ## Usage
 
-Ember GSAP by default includes TweenMax, TweenLite, TimelineLite, TimelineMax, CSSPlugin, RoundPropsPlugin, BezierPlugin, AttrPlugin, DirectionalRotationPlugin, and all of the eases like Power1, Power2, Power3, Power4, Back, Bounce, Circ, Cubic, Elastic, Expo, Linear, Sine, RoughEase, SlowMo, SteppedEase, etc.
+Ember GSAP by default includes `TweenMax`, `TweenLite`, `TimelineLite`, `TimelineMax`, `CSSPlugin`, `RoundPropsPlugin`, `BezierPlugin`, `AttrPlugin`, `DirectionalRotationPlugin`, and all of the easing functions `Power1`, `Power2`, `Power3`, `Power4`, `Back`, `Bounce`, `Circ`, `Cubic`, `Elastic`, `Expo`, `Linear`, `Sine`, `RoughEase`, `SlowMo` and `SteppedEase`.
 
 Recommended import style is as follows:
 
@@ -31,9 +31,23 @@ Easing functions can also be directly imported like so:
 import { Power2, Back, Elastic } from 'gsap/easing';
 ```
 
+## Core Libraries
+
+To prevent Ember GSAP from importing `TweenMax`, which automatically includes all the utilities listed above, you can cherry pick the core libraries and plugins you wish to include.
+
+```js
+// config/environment.js
+ENV['ember-gsap'] = {
+  core: [
+    'TweenLite',
+    'TimelineLite'
+  ]
+}
+```
+
 ## GSAP Plugins
 
-Popular Greensock Plugin libraries can be included like so:
+Popular Greensock Plugin libraries can be enabled like so:
 
 ```js
 // config/environment.js

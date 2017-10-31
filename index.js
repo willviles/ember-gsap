@@ -23,19 +23,33 @@ module.exports = {
   },
 
   importDependencies(app) {
-    let plugins = this.addonConfig.plugins || [],
+    let pluginConfig = this.addonConfig.plugins || [],
         vendor = this.treePaths.vendor,
         dir = `${vendor}/gsap`;
 
     app.import(`${dir}/TweenMax.js`);
 
-    if (plugins.includes('draggable')) {
-      app.import(`${dir}/Draggable.js`);
-    }
+    let plugins = {
+      'attr': 'AttrPlugin.js',
+      'bezier': 'BezierPlugin.js',
+      'colorProps': 'ColorPropsPlugin.js',
+      'css': 'CSSPlugin.js',
+      'cssRule': 'CSSRulePlugin.js',
+      'directionalRotation': 'DirectionalRotationPlugin.js',
+      'draggable': 'Draggable.js',
+      'easel': 'EaselPlugin.js',
+      'modifiers': 'ModifiersPlugin.js',
+      'raphael': 'RaphaelPlugin.js',
+      'roundProps': 'RoundPropsPlugin.js',
+      'scrollTo': 'ScrollToPlugin.js',
+      'TextPlugin': 'TextPlugin.js'
+    };
 
-    if (plugins.includes('scrollTo')) {
-      app.import(`${dir}/ScrollToPlugin.js`);
-    }
+    Object.keys(plugins).forEach(key => {
+      if (pluginConfig.includes(key)) {
+        app.import(`${dir}/${plugins[key]}`);
+      }
+    });
 
     app.import('vendor/gsap-shim.js', {
       exports: {

@@ -6,7 +6,6 @@ const mergeTrees = require('broccoli-merge-trees');
 const BroccoliDebug = require('broccoli-debug');
 const fastbootTransform = require('fastboot-transform');
 const path = require('path');
-const map = require('broccoli-stew').map;
 
 module.exports = {
   name: 'ember-gsap',

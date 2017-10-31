@@ -45,13 +45,21 @@ ENV['ember-gsap'] = {
 }
 ```
 
-The following plugins can be included:
-
-- [Draggable](https://greensock.com/draggable)  
-```js
-import { Draggable } from 'gsap';
-```    
-- [ScrollToPlugin](https://greensock.com/ScrollToPlugin)
+| Plugin | Key | Included in TweenMax? | Import |
+|-|-|-|-|
+| [Attr](https://greensock.com/docs/Plugins/AttrPlugin) | `attr` | ✓ | |
+| [Bezier](https://greensock.com/docs/Plugins/BezierPlugin) | `bezier` | ✓ | |
+| [ColorProps](https://greensock.com/docs/Plugins/ColorPropsPlugin) | `colorProps` | | |
+| [CSS](https://greensock.com/docs/Plugins/CSSPlugin) | `css` | ✓ | |
+| [CSSRule](https://greensock.com/docs/Plugins/CSSRulePlugin) | `cssRule` | | |
+| [DirectionalRotation](https://greensock.com/docs/Plugins/DirectionalRotationPlugin) | `directionalRotation` | ✓ | |
+| [Draggable](https://greensock.com/draggable) | `draggable` | | ```import { Draggable } from 'gsap';``` |
+| [Easel](https://greensock.com/docs/Plugins/EaselPlugin) | `easel` | | |
+| [Modifiers](https://greensock.com/docs/Plugins/ModifiersPlugin) | `modifiers` | | |
+| [Raphael](https://greensock.com/docs/Plugins/RaphaelPlugin) | `raphael` | | |
+| [RoundProps](https://greensock.com/docs/Plugins/RoundPropsPlugin) | `roundProps` | ✓ | |
+| [ScrollTo](https://greensock.com/docs/Plugins/ScrollToPlugin) | `scrollTo` | | |
+| [Text](https://greensock.com/docs/Plugins/TextPlugin) | `text` | | |
 
 ## Fastboot
 

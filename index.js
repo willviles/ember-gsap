@@ -23,11 +23,14 @@ module.exports = {
   },
 
   importDependencies(app) {
-    let pluginConfig = this.addonConfig.plugins || [],
+    let importConfig = this.addonConfig.core || ['TweenMax'],
+        pluginConfig = this.addonConfig.plugins || [],
         vendor = this.treePaths.vendor,
         dir = `${vendor}/gsap`;
 
-    app.import(`${dir}/TweenMax.js`);
+    importConfig.forEach(key => {
+      app.import(`${dir}/${key}.js`);
+    });
 
     let plugins = {
       'attr': 'AttrPlugin.js',

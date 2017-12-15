@@ -1,6 +1,6 @@
 {
   "name": "ember-gsap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GSAP - Greensock Animation Platform as ES6 Modules for Ember.js applications.",
   "keywords": [
     "ember-addon",

@@ -54,7 +54,7 @@ module.exports = {
       }
     });
 
-    app.import('vendor/gsap-shim.js', {
+    app.import('vendor/shims/gsap.js', {
       exports: {
         'gsap': ['TweenMax', 'TweenLite', 'TimelineMax', 'TimelineLite', 'easing'],
         'TweenMax': ['default'],

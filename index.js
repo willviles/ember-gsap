@@ -24,7 +24,7 @@ module.exports = {
 
   importDependencies(app) {
     let importConfig = this.addonConfig.core || ['TweenMax'],
-        pluginConfig = this.addonConfig.plugins || [],
+        pluginConfig = Array.isArray(this.addonConfig.plugins) ? this.addonConfig.plugins : [],
         vendor = this.treePaths.vendor,
         dir = `${vendor}/gsap`;
 
@@ -47,6 +47,10 @@ module.exports = {
       'scrollTo': 'ScrollToPlugin.js',
       'TextPlugin': 'TextPlugin.js'
     };
+
+    if (!Array.prototype.includes) {
+      require('./vendor/polyfills/array.includes.js');
+    }
 
     Object.keys(plugins).forEach(key => {
       if (pluginConfig.includes(key)) {
